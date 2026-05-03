@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Riegos García</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f8f4;
+            color: #1f2d1f;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32, #66bb6a);
+            color: white;
+            padding: 24px 6% 90px;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        .logo img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            padding: 4px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 28px;
+            font-weight: 600;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+            padding-top: 80px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #e8f5e9;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 25px 55px rgba(0,0,0,0.18);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: -45px auto 0;
+            padding: 0 6% 80px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 32px;
+            padding: 45px;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .info-card h2 {
+            color: #1b5e20;
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .info-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: #e8f5e9;
+            border-radius: 25px;
+            padding: 30px;
+        }
+
+        .highlight-box h3 {
+            color: #1b5e20;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+        }
+
+        .highlight-box li {
+            margin-bottom: 13px;
+            color: #344;
+            line-height: 1.6;
+        }
+
+        .highlight-box li::before {
+            content: "✓";
+            color: #2e7d32;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .technology-section {
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .technology-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+        }
+
+        .technology-text {
+            background: linear-gradient(135deg, #ffffff, #e8f5e9);
+            border-radius: 30px;
+            padding: 42px;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.07);
+        }
+
+        .tag {
+            display: inline-block;
+            background: #dcedc8;
+            color: #2e7d32;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .technology-text h2 {
+            color: #1b5e20;
+            font-size: 36px;
+            margin-bottom: 18px;
+        }
+
+        .technology-text p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .gallery {
+            margin-top: 70px;
+        }
+
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .gallery-title h2 {
+            color: #1b5e20;
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .gallery-title p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 26px;
+            overflow: hidden;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+            transition: 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(46,125,50,0.18);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-content {
+            padding: 24px;
+        }
+
+        .gallery-content h3 {
+            color: #1b5e20;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-content p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .values {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #2e7d32, #66bb6a);
+            color: white;
+            border-radius: 32px;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .values h2 {
+            font-size: 38px;
+            margin-bottom: 30px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 22px;
+            padding: 26px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .value-card p {
+            color: #e8f5e9;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #102710;
+            color: white;
+            text-align: center;
+            padding: 24px;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav div:last-child {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+
+            .hero,
+            .info-card,
+            .technology-section,
+            .gallery-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                text-align: center;
+                padding-top: 55px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            main {
+                margin-top: -35px;
+            }
+
+            .info-card,
+            .technology-text,
+            .values {
+                padding: 30px;
+            }
+
+            .hero-image img,
+            .technology-image img,
+            .gallery-item img {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="/img/logo_riegos.png" alt="Riegos García">
+            <span>Riegos García</span>
+        </div>
+
+        <div>
+            <a href="/">Inicio</a>
+            <a href="/servicios">Servicios</a>
+            <a href="/nosotros">Nosotros</a>
+            <a href="/contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div>
+            <h1>Somos una empresa que une experiencia, riego y jardinería moderna</h1>
+            <p>
+                En Riegos García trabajamos para crear áreas verdes funcionales, cuidadas y eficientes,
+                combinando instalación de sistemas de riego, jardinería profesional y tecnología moderna.
+            </p>
+        </div>
+
+        <div class="hero-image">
+            <img src="/img/trabajadores.jpeg" alt="Trabajadores instalando sistema de riego">
+        </div>
+    </section>
+</header>
+
+<main>
+
+    <section class="info-card">
+        <div>
+            <h2>¿Quiénes somos?</h2>
+            <p>
+                Riegos García nace con el objetivo de ofrecer soluciones confiables para el cuidado
+                de jardines, áreas verdes, terrenos y espacios que necesitan un sistema de riego eficiente.
+            </p>
+            <p>
+                Nos enfocamos en realizar trabajos limpios, bien planeados y duraderos, utilizando
+                materiales de calidad y herramientas adecuadas para cada tipo de proyecto.
+            </p>
+            <p>
+                Nuestro compromiso es ayudar a nuestros clientes a mantener espacios verdes,
+                saludables y mejor administrados, cuidando el consumo de agua y la presentación del lugar.
+            </p>
+        </div>
+
+        <div class="highlight-box">
+            <h3>Lo que nos distingue</h3>
+            <ul>
+                <li>Instalaciones profesionales y ordenadas</li>
+                <li>Uso de materiales resistentes y de buena calidad</li>
+                <li>Atención personalizada para cada cliente</li>
+                <li>Experiencia en riego y jardinería</li>
+                <li>Soluciones pensadas para ahorrar agua</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="technology-section">
+        <div class="technology-image">
+            <img src="/img/moderno.jpeg" alt="Sistema de riego automatizado">
+        </div>
+
+        <div class="technology-text">
+            <span class="tag">Tecnología aplicada al riego</span>
+            <h2>Riego más moderno, eficiente y automatizado</h2>
+            <p>
+                La empresa se está relacionando cada vez más con la tecnología moderna para ofrecer
+                sistemas de riego más automatizados, prácticos y eficientes.
+            </p>
+            <br>
+            <p>
+                Buscamos integrar soluciones como programadores de riego, aspersores de alto rendimiento,
+                sistemas por goteo y herramientas que permitan controlar mejor el uso del agua.
+            </p>
+            <br>
+            <p>
+                Al mismo tiempo, no dejamos de lado la jardinería tradicional: combinamos el trabajo manual,
+                el cuidado de plantas y áreas verdes con herramientas modernas que mejoran la calidad del servicio.
+            </p>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="gallery-title">
+            <h2>Nuestro trabajo en campo</h2>
+            <p>Riego, jardinería y mantenimiento realizados con cuidado y responsabilidad.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <article class="gallery-item">
+                <img src="/img/riego.jpeg" alt="Instalación de riego">
+                <div class="gallery-content">
+                    <h3>Instalación de riego</h3>
+                    <p>Sistemas diseñados para distribuir el agua de forma uniforme y eficiente.</p>
+                </div>
+            </article>
+
+            <article class="gallery-item">
+                <img src="/img/jardin.png" alt="Trabajo de jardinería">
+                <div class="gallery-content">
+                    <h3>Jardinería profesional</h3>
+                    <p>Mantenimiento, limpieza, poda y cuidado de áreas verdes.</p>
+                </div>
+            </article>
+
+            <article class="gallery-item">
+                <img src="/img/herramienta.jpeg" alt="Herramientas modernas de jardinería">
+                <div class="gallery-content">
+                    <h3>Herramientas modernas</h3>
+                    <p>Uso de equipo adecuado para mejorar tiempos, calidad y resultados.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="values">
+        <h2>Nuestros valores</h2>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Calidad</h3>
+                <p>Buscamos que cada instalación sea resistente, funcional y bien presentada.</p>
+            </div>
+
+            <div class="value-card">
+                <h3>Responsabilidad</h3>
+                <p>Cuidamos el tiempo, el espacio de trabajo y las necesidades del cliente.</p>
+            </div>
+
+            <div class="value-card">
+                <h3>Innovación</h3>
+                <p>Aplicamos tecnología moderna para mejorar los sistemas de riego.</p>
+            </div>
+
+            <div class="value-card">
+                <h3>Cuidado verde</h3>
+                <p>Mantenemos jardines y áreas verdes con atención, limpieza y detalle.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Riegos García | Sistemas de riego profesionales</p>
+</footer>
+
+</body>
+</html>

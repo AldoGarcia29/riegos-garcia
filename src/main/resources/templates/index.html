@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riegos García</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f8f4;
+            color: #1f2d1f;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32, #66bb6a);
+            color: white;
+            min-height: 100vh;
+            padding: 25px 5%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            padding: 4px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+        }
+
+        .hero {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            color: #e8f5e9;
+        }
+
+        .btn {
+            background: #ffffff;
+            color: #2e7d32;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 12px;
+            border: 2px solid white;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            color: #1b5e20;
+        }
+
+        .hero-card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .hero-card h3 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #1b5e20;
+            margin-bottom: 12px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+                min-height: 390px;
+    height: auto;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .icon {
+            font-size: 42px;
+            margin-bottom: 18px;
+        }
+
+        .service-card h3 {
+            color: #2e7d32;
+            margin-bottom: 12px;
+            font-size: 23px;
+        }
+
+        .service-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .about {
+            background: #e8f5e9;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about h2 {
+            color: #1b5e20;
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            line-height: 1.8;
+            color: #444;
+            font-size: 17px;
+        }
+
+        .about-box {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        footer {
+            background: #102710;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hero-card video {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+        @media (max-width: 850px) {
+            header {
+                min-height: auto;
+                padding: 25px 6%;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            nav div:last-child {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 0;
+                font-size: 16px;
+            }
+
+            .logo {
+                justify-content: center;
+                font-size: 26px;
+            }
+
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                padding-top: 50px;
+                text-align: left;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+                line-height: 1.15;
+            }
+
+            .hero-text p {
+                font-size: 18px;
+                line-height: 1.7;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+            }
+
+            .btn,
+            .btn-secondary {
+                display: block;
+                width: 100%;
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .hero-card {
+                width: 100%;
+                padding: 18px;
+            }
+
+            .services,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .card,
+.service-card {
+    min-height: 460px;
+}
+
+.card-front,
+.card-back {
+    min-height: 390px;
+    height: auto;
+    padding: 24px;
+}
+
+.card-back img {
+    height: 150px;
+}
+
+.card-back p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+
+            .hero-text p {
+                font-size: 16px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            nav div:last-child {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 15px;
+            }
+        }
+
+        .card {
+            width: 100%;
+            height: 330px;
+            perspective: 1000px;
+            max-width: 100%;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            color: white;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            backface-visibility: hidden;
+            padding: 30px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Frente */
+        .card-front {
+            background: white;
+        }
+
+        /* Atrás */
+        .card-back {
+            background: #2e7d32;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .card-back img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 12px;
+        }
+
+        .card-inner.flip {
+            transform: rotateY(180deg);
+        }
+
+        .card-back h3,
+        .card-back p {
+            color: white;
+        }
+
+        .carousel-wrapper {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.carousel {
+    display: flex;
+    gap: 28px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.work-card {
+    flex: 0 0 calc(33.333% - 19px);
+    background: white;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+}
+
+.work-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.work-card h3 {
+    color: #1b5e20;
+    font-size: 23px;
+    margin: 22px 22px 10px;
+}
+
+.work-card p {
+    color: #555;
+    line-height: 1.6;
+    margin: 0 22px 24px;
+}
+
+.carousel-btn {
+    min-width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: #2e7d32;
+    color: white;
+    font-size: 34px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(46,125,50,0.25);
+}
+
+.carousel-btn:hover {
+    background: #1b5e20;
+}
+
+@media (max-width: 850px) {
+    .carousel-wrapper {
+        gap: 10px;
+    }
+
+    .work-card {
+        flex: 0 0 100%;
+    }
+
+    .carousel-btn {
+        min-width: 42px;
+        height: 42px;
+        font-size: 30px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/img/logo_riegos.png" alt="Riegos García">
+                <span>Riegos García</span>
+            </div>
+
+            <div>
+                <a href="/">Inicio</a>
+                <a href="/servicios">Servicios</a>
+                <a href="/nosotros">Nosotros</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Soluciones de riego eficientes y profesionales</h1>
+                <p>
+                    Diseñamos e instalamos sistemas de riego para jardines, áreas verdes,
+                    campos agrícolas y negocios, ayudando a ahorrar agua y mejorar el cuidado de tus espacios.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn">Solicitar cotización</a>
+                    <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+                </div>
+            </div>
+
+            <div class="hero-card">
+    <video autoplay muted loop playsinline>
+        <source src="/video/Video Project.mp4" type="video/mp4">
+    </video>
+
+    <h3>Riego inteligente</h3>
+    <p>Instalaciones modernas, funcionales y adaptadas a cada necesidad.</p>
+</div>
+        </div>
+    </header>
+
+    <section class="works-section">
+    <div class="section-title">
+        <h2>Nuestros trabajos</h2>
+        <p>Algunos proyectos de riego y jardinería realizados con calidad y detalle.</p>
+    </div>
+
+    <div class="carousel-wrapper">
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">‹</button>
+
+        <div class="carousel" id="worksCarousel">
+            <div class="work-card">
+                <img src="/img/nocturno.jpeg" alt="Riego residencial">
+                <h3>Riego residencial</h3>
+                <p>Instalación de aspersores para jardines y áreas verdes.</p>
+            </div>
+
+            <div class="work-card">
+                <img src="/img/goteo.jpeg" alt="Riego agrícola">
+                <h3>Riego agrícola</h3>
+                <p>Sistemas de riego para árboles, cultivos y terrenos.</p>
+            </div>
+
+            <div class="work-card">
+                <img src="/img/fuga.jpeg" alt="Mantenimiento">
+                <h3>Mantenimiento</h3>
+                <p>Revisión, reparación y mejora de sistemas existentes.</p>
+            </div>
+
+            <div class="work-card">
+                <img src="/img/jardineria.jpeg" alt="Jardinería">
+                <h3>Jardinería</h3>
+                <p>Poda, limpieza y cuidado profesional de áreas verdes.</p>
+            </div>
+
+            <div class="work-card">
+                <img src="/img/goteo2.jpeg" alt="Jardinería">
+                <h3>Riego por goteo</h3>
+                <p>Riego con goteo en todo tipo de árbol, planta, etc.</p>
+            </div>
+
+            <div class="work-card">
+                <img src="/img/limpieza.jpeg" alt="Jardinería">
+                <h3>Limpieza de jardín</h3>
+                <p>Recolección de poda y cualquier residuo natural.</p>
+            </div>
+
+            <div class="work-card">
+                <img src="/img/abono.jpeg" alt="Jardinería">
+                <h3>Alimento de planta</h3>
+                <p>De ser necesario les aplicamos producto alimenticio a la planta para un mejor crecimiento.</p>
+            </div>
+
+
+            <div class="work-card">
+                <img src="/img/riego_noc.jpeg" alt="Jardinería">
+                <h3>Riego nocturno</h3>
+                <p>Riegos nocturnos para el aprovechamiento del agua.</p>
+            </div>
+        </div>
+
+        <button class="carousel-btn next" onclick="moveCarousel(1)">›</button>
+    </div>
+</section>
+
+    <section id="servicios">
+        <div class="section-title">
+            <h2>Nuestros servicios</h2>
+            <p>Soluciones pensadas para ahorrar agua y mantener tus espacios verdes.</p>
+        </div>
+
+        <div class="services">
+
+            <div class="service-card card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="icon">💧</div>
+                        <h3>Riego y jardinería residencial</h3>
+                        <p>Instalación de sistemas de riego para casas y áreas verdes.</p>
+                    </div>
+
+                    <div class="card-back">
+                        <img src="/img/Arcoiris.png" alt="Riego residencial">
+                        <p>
+                            Instalación profesional con aspersores Hunter y Rain Bird,
+                            optimizando el uso del agua y mejorando el cuidado del jardín.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card card">
+                <div class="card-inner">
+
+                    <!-- Frente -->
+                    <div class="card-front">
+                        <div class="icon">🌱</div>
+                        <h3>Riego agrícola</h3>
+                        <p>Sistemas de riego para árboles y cultivos.</p>
+                    </div>
+
+                    <!-- Atrás -->
+                    <div class="card-back">
+                        <img src="/img/goteo_mejor.jpeg" alt="Riego agrícola">
+                        <p>
+                            Instalación de sistemas de riego por goteo y aspersión para cultivos,
+                            mejorando la eficiencia del agua.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="service-card card">
+                <div class="card-inner">
+
+                    <!-- Frente -->
+                    <div class="card-front">
+                        <div class="icon">🔧</div>
+                        <h3>Mantenimiento</h3>
+                        <p>Revisión, reparación y mejora de instalaciones de riego existentes.</p>
+                    </div>
+
+                    <!-- Atrás -->
+                    <div class="card-back">
+                        <img src="/img/mantenimiento.png" alt="Mantenimiento de riego">
+                        <p>
+                            Diagnóstico y reparación de sistemas de riego, detección de fugas,
+                            cambio de piezas y optimización para un mejor rendimiento.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="nosotros" class="about">
+        <div>
+            <h2>Sobre Riegos García</h2>
+            <p>
+                En Riegos García ofrecemos soluciones prácticas y eficientes para el cuidado del agua.
+                Nuestro objetivo es crear sistemas de riego funcionales, duraderos y adaptados a cada cliente.
+            </p>
+            <br>
+            <p>
+                Trabajamos con jardines residenciales, negocios, áreas verdes y espacios agrícolas,
+                brindando atención personalizada desde la planeación hasta la instalación.
+            </p>
+        </div>
+
+        <div class="about-box">
+            <h3>¿Por qué elegirnos?</h3>
+            <br>
+            <p>✔ Atención personalizada</p>
+            <p>✔ Sistemas eficientes</p>
+            <p>✔ Ahorro de agua</p>
+            <p>✔ Instalación profesional</p>
+            <p>✔ Mantenimiento y soporte</p>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <h2>¿Necesitas un sistema de riego?</h2>
+        <p>Contáctanos y recibe una cotización para tu proyecto.</p>
+
+        <a href="https://wa.me/524461382466" class="btn">Contactar por WhatsApp</a>
+    </section>
+
+    <footer>
+        <p>© 2026 Riegos García | Sistemas de riego profesionales</p>
+    </footer>
+
+    <script>
+        // Siempre cargar desde arriba al refrescar
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                window.scrollTo(0, 0);
+            }, 0);
+        });
+
+        // Scroll suave en botones y navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                    // Quita el # de la URL
+                    history.replaceState(null, '', window.location.pathname);
+                }
+            });
+        });
+
+        // Voltear cards al hacer click
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.querySelector('.card-inner').classList.toggle('flip');
+            });
+        });
+
+
+        function moveCarousel(direction) {
+    const carousel = document.getElementById('worksCarousel');
+    const card = carousel.querySelector('.work-card');
+
+    if (!card) return;
+
+    const gap = 28;
+    const cardWidth = card.offsetWidth + gap;
+
+    carousel.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+    });
+}
+    </script>
+
+</body>
+
+</html>
