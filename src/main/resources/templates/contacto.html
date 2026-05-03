@@ -293,17 +293,13 @@
     <h2>Solicitar información</h2>
     <p>Déjanos tus datos y te contactaremos para atender tu proyecto.</p>
 
-    <form action="/enviar-contacto" method="post" class="contact-form">
-        <input type="text" name="nombre" placeholder="Nombre completo" required>
-
-        <input type="tel" name="telefono" placeholder="Teléfono" required>
-
-        <input type="email" name="correo" placeholder="Correo electrónico" required>
-
-        <textarea name="mensaje" placeholder="Cuéntanos qué necesitas" required></textarea>
-
-        <button type="submit" class="btn">Enviar mensaje</button>
-    </form>
+    <form class="contact-form">
+    <input type="text" name="nombre" placeholder="Nombre completo" required>
+    <input type="tel" name="telefono" placeholder="Teléfono" required>
+    <input type="email" name="correo" placeholder="Correo electrónico" required>
+    <textarea name="mensaje" placeholder="Cuéntanos qué necesitas" required></textarea>
+    <button type="submit" class="btn">Enviar mensaje</button>
+</form>
 </div>
     </section>
 
@@ -320,5 +316,26 @@
     <p>© 2026 Riegos García | Sistemas de riego profesionales</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+    emailjs.init("nH8M0b_ipCzEPq35l");
+
+    const form = document.querySelector(".contact-form");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailjs.sendForm("service_z909m7t", "template_f9298q6", this)
+            .then(() => {
+                alert("Mensaje enviado correctamente. Te contactaremos pronto.");
+                form.reset();
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("No se pudo enviar el mensaje. Intenta por WhatsApp.");
+            });
+    });
+</script>
 </body>
 </html>
