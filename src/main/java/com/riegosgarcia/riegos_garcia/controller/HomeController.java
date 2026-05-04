@@ -25,4 +25,9 @@ public class HomeController {
     public String contacto() {
         return "contacto";
     }
+
+    @GetMapping("/ubicacion")
+    public String ubicacion() {
+        return "ubicacion";
+    }
 }

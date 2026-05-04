@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubicación | Riegos García</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRDMKJFREE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KRDMKJFREE');
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f8f4;
+            color: #1f2d1f;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32, #66bb6a);
+            color: white;
+            padding: 24px 6%;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        .logo img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            padding: 4px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 28px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #e8f5e9;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 0 95px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.05;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #e8f5e9;
+        }
+
+        .hero-card {
+            background: white;
+            color: #1b5e20;
+            padding: 30px;
+            border-radius: 28px;
+            box-shadow: 0 25px 55px rgba(0,0,0,0.16);
+        }
+
+        .hero-card h3 {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        .hero-card p {
+            color: #355e35;
+            font-size: 16px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: -45px auto 0;
+            padding: 0 6% 80px;
+        }
+
+        .location-section {
+            background: white;
+            border-radius: 32px;
+            padding: 45px;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+            border: 1px solid #e2efe2;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: #1b5e20;
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .location-map {
+            background: #e8f5e9;
+            border-radius: 26px;
+            padding: 14px;
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 360px;
+            border: 0;
+            border-radius: 20px;
+        }
+
+        .location-info {
+            background: linear-gradient(135deg, #ffffff, #e8f5e9);
+            border-radius: 26px;
+            padding: 34px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .location-info h3 {
+            color: #1b5e20;
+            font-size: 30px;
+            margin-bottom: 14px;
+        }
+
+        .location-info p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 17px;
+        }
+
+        .location-info ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .location-info li {
+            margin-bottom: 11px;
+            color: #344;
+        }
+
+        .location-info li::before {
+            content: "✓";
+            color: #2e7d32;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .location-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-location {
+            display: inline-block;
+            padding: 14px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .btn-location.google {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .btn-location.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-location:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(46,125,50,0.25);
+        }
+
+        .areas-section {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #ffffff, #e8f5e9);
+            border-radius: 30px;
+            padding: 45px;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.06);
+        }
+
+        .areas-section h2 {
+            color: #1b5e20;
+            font-size: 34px;
+            margin-bottom: 26px;
+            text-align: center;
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .area-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid #e2efe2;
+        }
+
+        .area-icon {
+            width: 48px;
+            height: 48px;
+            background: #2e7d32;
+            color: white;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 14px;
+            font-size: 22px;
+        }
+
+        .area-card h3 {
+            color: #1b5e20;
+            margin-bottom: 8px;
+        }
+
+        .area-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .cta {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #2e7d32, #66bb6a);
+            color: white;
+            border-radius: 32px;
+            padding: 55px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 14px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 28px;
+            color: #e8f5e9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #2e7d32;
+            padding: 15px 32px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #102710;
+            color: white;
+            text-align: center;
+            padding: 24px;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav div:last-child {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px;
+            }
+
+            nav a {
+                margin: 0;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 55px 0 75px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            main {
+                margin-top: -35px;
+            }
+
+            .location-section {
+                padding: 28px;
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 31px;
+            }
+
+            .location-info h3 {
+                font-size: 27px;
+            }
+
+            .location-map iframe {
+                height: 300px;
+            }
+
+            .areas-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 20px 5%;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .logo img {
+                width: 46px;
+                height: 46px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-card {
+                padding: 24px;
+            }
+
+            main {
+                padding: 0 5% 60px;
+            }
+
+            .location-section,
+            .areas-section {
+                padding: 24px;
+                border-radius: 24px;
+            }
+
+            .location-map iframe {
+                height: 260px;
+            }
+
+            .location-info {
+                padding: 24px;
+            }
+
+            .location-buttons {
+                flex-direction: column;
+            }
+
+            .btn-location {
+                text-align: center;
+                width: 100%;
+            }
+
+            .areas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                padding: 35px 24px;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="/img/logo_riegos.png" alt="Riegos García">
+            <span>Riegos García</span>
+        </div>
+
+        <div>
+            <a href="/">Inicio</a>
+            <a href="/servicios">Servicios</a>
+            <a href="/nosotros">Nosotros</a>
+            <a href="/ubicacion">Ubicación</a>
+            <a href="/contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div>
+            <h1>Trabajamos en Querétaro y alrededores</h1>
+            <p>
+                Brindamos servicio profesional de instalación, mantenimiento y reparación de sistemas de riego
+                para jardines, áreas verdes, fraccionamientos y espacios residenciales.
+            </p>
+        </div>
+
+        <div class="hero-card">
+            <h3>Servicio local y confiable</h3>
+            <p>
+                Estamos ubicados en Querétaro y atendemos proyectos cercanos con asesoría personalizada,
+                materiales de calidad y trabajo profesional.
+            </p>
+        </div>
+    </section>
+</header>
+
+<main>
+
+    <section class="location-section">
+
+        <div class="section-title">
+            <h2>📍 Nuestra ubicación</h2>
+            <p>
+                Consulta nuestra zona de servicio y visita nuestro perfil de Google para ver opiniones,
+                ubicación y formas de contacto.
+            </p>
+        </div>
+
+        <div class="location-content">
+
+            <div class="location-map">
+                <iframe
+                    src="https://www.google.com/maps?q=Querétaro&output=embed"
+                    loading="lazy"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="location-info">
+                <span class="tag">Zona de servicio</span>
+
+                <h3>Riegos García en Querétaro</h3>
+
+                <p>
+                    Atendemos clientes en Querétaro y zonas cercanas, ofreciendo soluciones de riego
+                    para jardines residenciales, áreas verdes y espacios que necesitan un sistema eficiente.
+                </p>
+
+                <ul>
+                    <li>Instalación de sistemas de riego</li>
+                    <li>Mantenimiento y reparación</li>
+                    <li>Servicio para jardines y áreas verdes</li>
+                    <li>Atención en Querétaro y alrededores</li>
+                </ul>
+
+                <div class="location-buttons">
+                    <a href="https://share.google/0mQ9vZDwIggInpKSG" target="_blank" class="btn-location google">
+                        ⭐ Ver perfil en Google
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="areas-section">
+        <h2>¿Dónde damos servicio?</h2>
+
+        <div class="areas-grid">
+            <div class="area-card">
+                <div class="area-icon">🏡</div>
+                <h3>Casas</h3>
+                <p>Sistemas de riego para jardines residenciales.</p>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon">🌳</div>
+                <h3>Áreas verdes</h3>
+                <p>Soluciones para espacios amplios y zonas comunes.</p>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon">🏘️</div>
+                <h3>Fraccionamientos</h3>
+                <p>Instalación y mantenimiento para áreas compartidas.</p>
+            </div>
+
+            <div class="area-card">
+                <div class="area-icon">🌿</div>
+                <h3>Jardines</h3>
+                <p>Cuidado, riego y mantenimiento de espacios verdes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>¿Necesitas servicio en tu zona?</h2>
+        <p>Contáctanos y te ayudamos a revisar si podemos atender tu ubicación.</p>
+        <a href="/contacto" class="btn">Solicitar cotización</a>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Riegos García | Sistemas de riego profesionales</p>
+</footer>
+
+</body>
+</html>
