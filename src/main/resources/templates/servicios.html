@@ -28,32 +28,35 @@
             color: #1f2d1f;
         }
 
-        header {
+       header {
             background: linear-gradient(135deg, #2e7d32, #66bb6a);
             color: white;
             min-height: 100vh;
-            padding: 24px 5%;
+            padding: 25px 5%;
+            display: flex;
+            flex-direction: column;
         }
 
         nav {
-            max-width: 1200px;
-            margin: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            transition: 0.3s;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 26px;
-            font-weight: 800;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
         }
 
         .logo img {
-            width: 52px;
-            height: 52px;
+            width: 55px;
+            height: 55px;
             object-fit: contain;
             border-radius: 50%;
             background: white;
@@ -63,8 +66,8 @@
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 28px;
-            font-weight: 600;
+            margin-left: 25px;
+            font-weight: 500;
         }
 
         .hero {
